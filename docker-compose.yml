@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  sage-jupyter: 
+    container_name: "${DOCKER_CONTAINER_NAME}"
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${DOCKER_PORT}:8888"
+    entrypoint: [
+      "jupyter",
+      "lab",
+      "--allow-root",
+      "--ip=0.0.0.0", 
+      "--NotebookApp.token=''", 
+      "--NotebookApp.password=''",
+      "--NotebookApp.allow_origin='https://colab.research.google.com'",
+      "--NotebookApp.port_retries=0"
+    ]
+    volumes:
+      - ./notebooks:/sage
