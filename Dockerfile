@@ -11,7 +11,6 @@ RUN pip install jupyter_http_over_ws
 RUN jupyter serverextension enable --py jupyter_http_over_ws
 
 # Create default config for jupyter
-COPY ./config/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 WORKDIR /sage
 
 EXPOSE 8888
